@@ -1,6 +1,7 @@
 # Artificial Neural Networks and Deep Learning – Politecnico di Milano (2024/25)
 This repository contains the homework assignments developed for the Artificial Neural Networks and Deep Learning course at Politecnico di Milano.
 The work covers two main tasks in computer vision: image classification and semantic segmentation, focusing on model design, training strategies, and performance evaluation.
+A detailed description of the methodologies, experiments, and overall development process is provided in the reports included in each homework folder.
 
 ### Team Members
 - Cagnazzo Davide
