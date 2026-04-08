@@ -3,6 +3,7 @@ This repository contains the homework assignments developed for the Artificial N
 The work covers two main tasks in computer vision: image classification and semantic segmentation, focusing on model design, training strategies, and performance evaluation.
 A detailed description of the methodologies, experiments, and overall development process is provided in the reports included in each homework folder.
 
+
 ### Team Members
 - Cagnazzo Davide
 - Currò Dossi Federica
@@ -211,6 +212,9 @@ The dataset consists of:
 - **2,615 grayscale images**
 - Resolution: **64 × 128 pixels**
 - **5 pixel classes**
+  
+<img width="599" height="87" alt="Screenshot 2026-04-08 at 13 16 21" src="https://github.com/user-attachments/assets/ac79b7ad-b523-408f-9dab-7bcc111cc526" />
+<img width="991" height="195" alt="Screenshot 2026-04-08 at 13 16 54" src="https://github.com/user-attachments/assets/bb54b019-22e5-4cf9-9c11-6ee9ab170016" />
 
 Initial class distribution:
 
