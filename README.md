@@ -1,7 +1,14 @@
-# Artificial Neural Networks and Deep Learning – Politecnico di Milano
+# Artificial Neural Networks and Deep Learning – Politecnico di Milano (2024/25)
 This repository contains the homework assignments developed for the Artificial Neural Networks and Deep Learning course at Politecnico di Milano.
 The work covers two main tasks in computer vision: image classification and semantic segmentation, focusing on model design, training strategies, and performance evaluation.
 
+### Team Members: 
+- Cagnazzo Davide
+- Currò Dossi Federica
+- Scanu Gianluca
+- Secco Davide
+
+### Team Name: 3Brown1Green
 ---
 
 ## 📂 Homework 1 – Blood Cell Image Classification
