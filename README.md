@@ -189,3 +189,182 @@ This combination achieved:
 
 ---
 
+## 📂 Homework 2 – Mars Terrain Semantic Segmentation
+
+### 📌 Problem
+
+This homework focuses on solving a **multi-class semantic segmentation problem** on Mars terrain images.  
+The objective is to assign a class label to each pixel of the image.
+
+The main challenges include:
+- strong **class imbalance at pixel level**
+- presence of **outliers and corrupted masks**
+- difficulty in modeling the **background class**
+- limited dataset size
+
+---
+
+### 📊 Dataset
+
+The dataset consists of:
+
+- **2,615 grayscale images**
+- Resolution: **64 × 128 pixels**
+- **5 pixel classes**
+
+Initial class distribution:
+
+<img width="568" height="393" alt="Screenshot 2026-04-08 at 12 56 05" src="https://github.com/user-attachments/assets/fe8795e7-fe7a-417f-aaa3-2b6f4f2a714a" />
+
+---
+
+### 🔍 Method Overview
+
+The adopted workflow includes:
+
+1. Dataset inspection and cleaning  
+2. Preprocessing and normalization  
+3. Loss function engineering  
+4. Class imbalance handling  
+5. Data augmentation  
+6. Model design and architectural improvements  
+7. Training optimization and evaluation  
+
+---
+
+### 🧹 Data Preprocessing
+
+#### Outlier Removal
+
+During dataset analysis, corrupted samples were identified:
+
+- Multiple images shared the same incorrect mask (not matching the input image)
+- All samples with this mask were removed
+
+---
+
+#### Brightness Adjustment
+
+To improve consistency across images:
+
+- Implemented an **AutoBrightness function**
+- Normalized pixel intensity across the dataset
+
+This reduced variability due to exposure differences and improved model stability.
+
+---
+
+### ⚖️ Handling Class Imbalance
+
+To address pixel-level imbalance:
+
+- **Fixed class weights** were introduced in the loss function
+- Weights computed based on pixel distribution
+
+This allowed the model to focus more on underrepresented classes.
+
+---
+
+### 🔁 Data Augmentation
+
+Data augmentation was implemented using **Albumentations**, ensuring consistency between images and masks.
+
+Tested approaches:
+
+- Heavy augmentation → degraded performance  
+- Light augmentation → limited improvement  
+- Final choice:
+  - **Horizontal flip + small rotations**
+
+This provided a good balance between variability and label consistency.
+
+---
+
+### 🧠 Model Architecture
+
+The final solution is based on a **modified U-Net architecture**, including:
+
+- Encoder–decoder structure  
+- **Residual connections**  
+- **Squeeze-and-Excitation (SE) blocks**  
+- Deeper convolutional layers  
+- **ConvTranspose upsampling**  
+- **L2 regularization**
+
+Output layer:
+- Softmax for multi-class segmentation  
+
+---
+
+### ⚙️ Loss Functions
+
+Several losses were tested:
+
+- Dice Loss  
+- Focal Loss  
+- Pixel-wise Crossentropy  
+- Lovasz Softmax  
+
+Best configurations:
+
+- **0.2 Crossentropy + 0.8 Focal Loss**
+- **0.5 Dice Loss + 0.5 Focal Loss**
+
+Important design choice:
+- **background class excluded from loss computation**
+- resulted in **significant performance improvement**
+
+---
+
+### ⚙️ Optimization
+
+- Optimizers:
+  - Adam  
+  - **AdamW (best)**  
+
+- Learning rate schedulers:
+  - CosineDecayRestarts  
+  - **PolynomialDecay (best performance)**  
+  - ExponentialDecay  
+  - InverseTimeDecay (discarded)
+
+---
+
+### 🧪 Experiments
+
+We evaluated multiple configurations:
+
+- Loss combinations  
+- Learning rate schedulers  
+- Brightened vs standard datasets  
+- Model complexity  
+
+Additional methods tested:
+- attention mechanisms  
+- ASPP modules  
+- bidirectional LSTM  
+- ensemble models  
+
+These approaches did not outperform the final model.
+
+---
+
+### 📈 Results
+
+<img width="484" height="383" alt="Screenshot 2026-04-08 at 12 56 48" src="https://github.com/user-attachments/assets/5e8a0e1d-7c5a-4a92-9a31-e25e36dbab20" />
+
+---
+
+### ✅ Final Solution
+
+The best-performing solution is:
+
+**Modified U-Net + CrossEntropy/Focal Loss + Polynomial LR Scheduler**
+
+This configuration achieved:
+- strong generalization  
+- improved segmentation quality  
+- better handling of class imbalance  
+
+---
+
